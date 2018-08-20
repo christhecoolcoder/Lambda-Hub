@@ -4,6 +4,7 @@ import Assignments from './Assignments';
 import { fetchAssignments } from './services/api';
 
 export default class App extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -13,9 +14,9 @@ export default class App extends Component {
 
   fetchAllAssignments() {
     fetchAssignments()
-    .then(assignments => {
-      this.setState({ assignments: assignments.data.assignments });
-    });
+      .then(data => {
+        this.setState({ assignments: data });
+      });
   }
 
   componentDidMount() {
@@ -26,7 +27,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <h1>Hello LambdaHub!</h1>
-        <Assignments />
+        <Assignments assignments={this.state.assignments} />
       </div>
     );
   }
