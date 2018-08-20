@@ -1,6 +1,6 @@
 # Lambda-Hub
 
-Run "npm run start" to start react server
+## What is lambda-hub?
 
 ## user stories
 
@@ -26,3 +26,12 @@ as a user i would like view other users comments about assignments
 ![alt text](https://github.com/christhecoolcoder/Lambda-Hub/blob/master/IMG_20180820_114808730.jpg)
 ![alt text](https://github.com/christhecoolcoder/Lambda-Hub/blob/master/IMG_20180820_114804779.jpg)
 ![alt text](https://github.com/christhecoolcoder/Lambda-Hub/blob/master/IMG_20180820_114755816.jpg)
+
+## technologies used
+react 
+git 
+express
+html 
+css
+node 
+yarn
