@@ -28,10 +28,10 @@ as a user i would like view other users comments about assignments
 ![alt text](https://github.com/christhecoolcoder/Lambda-Hub/blob/master/IMG_20180820_114755816.jpg)
 
 ## technologies used
-react 
-git 
-express
-html 
-css
-node 
-yarn
+- react 
+- git 
+- express
+- html 
+- css
+- node 
+- yarn
