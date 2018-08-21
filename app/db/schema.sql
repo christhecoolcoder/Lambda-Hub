@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS comments;
 
 CREATE TABLE assignments (
   id SERIAL PRIMARY KEY,
+  title VARCHAR(50),
   date DATE,
   github_link VARCHAR(400),
   created_at TIMESTAMP,
