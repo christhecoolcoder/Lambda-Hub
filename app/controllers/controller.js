@@ -32,6 +32,22 @@ module.exports = {
         next();
       });
   },
+  createAssignment(req, res, next) {
+    const data = {
+      id: req.params.id,
+      name: req.body.name,
+      date: req.body.date,
+      type: req.body.type,
+      unit: req.body.unit,
+      github_link: req.body.github_link
+    }
+
+    db.createAssignment(data)
+      .then(assignment => {
+        res.locals.assignment = assignment;
+        next();
+      });
+  },
   destroyAssignment(req, res, next) {
     db.destroy(req.params.id)
     .then(() => {
