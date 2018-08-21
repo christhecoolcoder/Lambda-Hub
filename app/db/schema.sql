@@ -1,4 +1,7 @@
-CREATE TABLE IF NOT EXISTS assignments (
+DROP TABLE IF EXISTS assignments;
+DROP TABLE IF EXISTS comments;
+
+CREATE TABLE assignments (
   id SERIAL PRIMARY KEY,
   date DATE,
   github_link VARCHAR(400),
@@ -7,7 +10,7 @@ CREATE TABLE IF NOT EXISTS assignments (
   unit VARCHAR(20)
 );
 
-CREATE TABLE IF NOT EXISTS comments (
+CREATE TABLE comments (
   id SERIAL PRIMARY KEY,
   assignment_id integer,
   comment text
