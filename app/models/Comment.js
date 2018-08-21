@@ -1,24 +1,22 @@
-const { db, pgp } = require('../config/conn');
+const { db, pgp } = require('../config/connection');
 
 module.exports = {
   create(comment) {
     return db.one(`
-      INSERT INTO comments
-      (assignment_id, comment, created_at)
-      VALUES
-      ($/assignment_id, $/comment/, now())
+      INSERT INTO comments (assignment_id, comment, created_at)
+      VALUES ($/assignment_id/, $/comment/, now() )
       RETURNING *
-    `, author);
+    `, comment);
   },
 
   index() {
     return db.manyOrNone(
       `SELECT *
-      FROM comment`
+      FROM comments`
     );
   },
 
-  update(author) {
+  update(comment) {
     return db.one(`
     UPDATE comments
     SET 
@@ -36,8 +34,8 @@ module.exports = {
   },
 };
 
-// module.exports.findAll().then(assignment => console.log(assignment));
+// module.exports.index().then(comment => console.log(comment));
 // module.exports.findById(2).then(assignment => console.log(assignment));
- module.exports.create({name: 'Soda Lab', description: 'tasty', url: 'https://git.generalassemb.ly/wdi-nyc-lambda/soda-lab'}).then(assignment => console.log(assignment));
-// module.exports.update({ id: 5, name: 'Soda Lab', description: 'build up, from scratch, an app for storing and retrieving different brands of soda.', url: 'https://git.generalassemb.ly/wdi-nyc-lambda/soda-lab' }).then(assignment => console.log(assignment));
-// module.exports.destroy(4).then(assignment => console.log(assignment));
+// module.exports.create({assignment_id: 1, comment: 'Soda Lab comment'}).then(comment => console.log(comment));
+// module.exports.update({ id: 2, comment: 'Some newly updated assignment' }).then(comment => console.log(comment));
+// module.exports.destroy(0).then(comment => console.log(comment));

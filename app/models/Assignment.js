@@ -10,5 +10,6 @@ module.exports = {
   }
 
 
-}
+};
+module.exports.index().then(comment => console.log(comment));
 
