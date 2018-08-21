@@ -6,7 +6,11 @@ router.get('/:id',
   AssignmentController.getOne,
   (req, res) => res.json(res.locals.assignment)
 );
- 
+
+router.put('/:id',
+  AssignmentController.updateAssignment,
+  (req, res) => res.json(res.locals.assignment)
+);
 
 router.get('/',
   AssignmentController.getAll,
