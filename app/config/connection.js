@@ -1,7 +1,7 @@
 const pgp = require('pg-promise')();
 
 const opts = {
-  database: 'lamda_db'
+  database: 'lambda_hub'
 };
 
 const db = pgp(opts);
