@@ -14,8 +14,8 @@ export default class App extends Component {
 
   fetchAllAssignments() {
     fetchAssignments()
-      .then(data => {
-        this.setState({ assignments: data });
+      .then(({assignments}) => {
+        this.setState({ assignments });
       });
   }
 
