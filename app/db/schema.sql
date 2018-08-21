@@ -5,7 +5,6 @@ CREATE TABLE assignments (
   id SERIAL PRIMARY KEY,
   name VARCHAR(400),
   date DATE,
-  name VARCHAR(50),
   github_link VARCHAR(400),
   type VARCHAR(50),
   unit VARCHAR(20)
@@ -15,6 +14,5 @@ CREATE TABLE comments (
   id SERIAL PRIMARY KEY,
   created_at TIMESTAMP,
   assignment_id integer,
-  comment text,
-  created_at TIMESTAMP
+  comment text
 );
