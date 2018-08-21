@@ -28,6 +28,15 @@ module.exports = {
       RETURNING *
       `, assignment);
     },
+    createAssignment(assignment) {
+      return db.one(`
+      INSERT INTO assignments
+      (name, date, type, unit, github_link)
+      VALUES
+      ($/name/, $/date/, $/type/, $/unit/, $/github_link/)
+      RETURNING *
+      `, assignment);
+    },
     destroy(id) {
       return db.none(`
           DELETE FROM assignments
