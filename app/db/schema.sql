@@ -3,9 +3,9 @@ DROP TABLE IF EXISTS comments;
 
 CREATE TABLE assignments (
   id SERIAL PRIMARY KEY,
+  name VARCHAR(400),
   date DATE,
   github_link VARCHAR(400),
-  created_at TIMESTAMP,
   type VARCHAR(50),
   unit VARCHAR(20)
 );
@@ -13,5 +13,6 @@ CREATE TABLE assignments (
 CREATE TABLE comments (
   id SERIAL PRIMARY KEY,
   assignment_id integer,
-  comment text
+  comment text,
+  created_at TIMESTAMP
 );
