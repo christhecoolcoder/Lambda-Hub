@@ -14,7 +14,7 @@ router.put('/:id',
 
 router.delete('/:id',
   AssignmentController.destroyAssignment,
-  (req, res) => res.json('deleted')
+  (req, res) => res.json(`deleted assignment ${req.params.id}`)
 );
 
 router.get('/',
