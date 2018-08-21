@@ -12,6 +12,11 @@ router.put('/:id',
   (req, res) => res.json(res.locals.assignment)
 );
 
+router.delete('/:id',
+  AssignmentController.destroyAssignment,
+  (req, res) => res.json('deleted')
+);
+
 router.get('/',
   AssignmentController.getAll,
   (req, res) => res.json({assignments: res.locals.assignments})

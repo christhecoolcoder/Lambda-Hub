@@ -31,5 +31,12 @@ module.exports = {
         res.locals.assignment = assignment;
         next();
       });
+  },
+  destroyAssignment(req, res, next) {
+    db.destroy(req.params.id)
+    .then(() => {
+      next();
+    })
+      .catch(next);
   }
 }
