@@ -5,7 +5,7 @@ module.exports = {
   index() {
     return db.manyOrNone(
       `SELECT *
-      FROM work`
+      FROM assignments`
     );
   }
 

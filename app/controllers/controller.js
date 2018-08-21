@@ -1,10 +1,10 @@
-const WorkModel = require('../models/Work');
+const AssignmentModel = require('../models/Assignment');
 
 module.exports = {
   getAll(req, res, next) {
-    WorkModel.index()
-      .then(work => {
-        res.locals.work = work;
+    AssignmentModel.index()
+      .then(assignment => {
+        res.locals.assignment = assignment;
         next();
       })
       .catch(next);

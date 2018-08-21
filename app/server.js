@@ -16,6 +16,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(cors());
 
-app.use('/work', Router);
+app.use('/assignments', Router);
 
 app.listen(PORT, () => console.log('listening on port: ', PORT));

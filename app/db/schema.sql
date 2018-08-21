@@ -1,15 +1,17 @@
-DROP TABLE IF EXISTS work;
-DROP TABLE IF EXISTS students;
+DROP TABLE IF EXISTS assignments;
+DROP TABLE IF EXISTS comments;
 
-CREATE TABLE work (
+CREATE TABLE assignments (
   id SERIAL PRIMARY KEY,
-  created_at TIMESTAMP NOT NULL DEFAULT now(),
-  unit VARCHAR(255) NOT NULL,
-  description text
+  date DATE,
+  github_link VARCHAR(400),
+  created_at TIMESTAMP,
+  type VARCHAR(50),
+  unit VARCHAR(20)
 );
 
-CREATE TABLE comments(
+CREATE TABLE comments (
   id SERIAL PRIMARY KEY,
-  work_id INTEGER NOT NULL REFERENCES work(work_id),
-  created_at TIMESTAMP NOT NULL DEFAULT now()
+  assignment_id integer,
+  comment text
 );
