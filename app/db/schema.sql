@@ -3,14 +3,17 @@ DROP TABLE IF EXISTS comments;
 
 CREATE TABLE assignments (
   id SERIAL PRIMARY KEY,
+  name VARCHAR(400),
   date DATE,
-  github_link VARCHAR(400),
+  unit INTEGER,
   type VARCHAR(50),
-  unit VARCHAR(20)
+  github_link VARCHAR(400) 
 );
 
 CREATE TABLE comments (
   id SERIAL PRIMARY KEY,
-  assignment_id integer,
-  comment text
+  name VARCHAR(50),
+  assignment_id INTEGER REFERENCES assignments (id),
+  comment TEXT,
+  created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
