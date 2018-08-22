@@ -9,19 +9,19 @@ module.exports = {
       })
       .catch(next);
     },
-    create(req, res, next) {
+    createComment(req, res, next) {
       const data = {
-        assignment_id: parseInt(req.body.assignment_id),
+        assignment_id: parseInt(1),
         comment: req.body.comment,
       }
     
-      CommentModel.create(data)
+      CommentModel.createComment(data)
         .then(comment => {
           res.locals.comment = comment;
           next();
         });
      },
-     updateComment(req, res, next) {
+     update(req, res, next) {
       const data = {
         assignment_id: parseInt(req.body.assignment_id),
         comment: req.body.comment,

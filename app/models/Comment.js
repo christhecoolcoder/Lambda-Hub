@@ -1,7 +1,7 @@
 const { db, pgp } = require('../config/connection');
 
 module.exports = {
-  create(comment) {
+  createComment(comment) {
     return db.one(`
       INSERT INTO comments (assignment_id, comment, created_at)
       VALUES ($/assignment_id/, $/comment/, now() )
@@ -21,7 +21,7 @@ module.exports = {
     UPDATE comments
     SET 
     comment=$/comment/
-    WHERE id = $/id/
+    WHERE id =$/id/
     RETURNING *
     `, comment);
   },
@@ -35,7 +35,7 @@ module.exports = {
 };
 
 // module.exports.index().then(comment => console.log(comment));
-// module.exports.findById(2).then(assignment => console.log(assignment));
-// module.exports.create({assignment_id: 1, comment: 'Soda Lab comment'}).then(comment => console.log(comment));
+// module.exports.findById(2).then(comment => console.log(comment));
+// module.exports.create({assignment_id: 1, comment: 'Debug Comment'}).then(comment => console.log(comment));
 // module.exports.update({ id: 2, comment: 'Some newly updated assignment' }).then(comment => console.log(comment));
 // module.exports.destroy(0).then(comment => console.log(comment));

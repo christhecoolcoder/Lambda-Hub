@@ -1,20 +1,20 @@
 const router = require('express')();
 
-const commentsController = require('../controllers/Comments');
+const CommentsController = require('../controllers/Comments');
 
 router.get('/',
-commentsController.getAll,
-  (req, res) => res.json({authors: res.locals.comments})
+CommentsController.getAll,
+  (req, res) => res.json({comments: res.locals.comments})
 );
 
 router.post('/',
-commentsController.createAuthor,
-  (req, res) => res.json(res.locals.comments)
+CommentsController.createComment,
+  (req, res) => res.json(res.locals.comment)
 );
 
 router.put('/:id',
-commentsController.updateAuthor,
-  (req, res) => res.json(res.locals.comments))
+CommentsController.update,
+  (req, res) => res.json(res.locals.comment))
 
 
 module.exports = router;
