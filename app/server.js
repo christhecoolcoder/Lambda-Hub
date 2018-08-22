@@ -2,7 +2,9 @@ const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const Router = require('./routes/router');
+const AssignmentRouter = require('./routes/assignmentRouter');
+const CommentRouter = require('./routes/CommentRouter');
+
 
 const PORT = 3001;
 
@@ -16,6 +18,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(cors());
 
-app.use('/assignments', Router);
+app.use('/assignments', AssignmentRouter);
+app.use('/comments', CommentRouter);
+
 
 app.listen(PORT, () => console.log('listening on port: ', PORT));

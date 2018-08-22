@@ -1,11 +1,6 @@
 const router = require('express')();
-const AssignmentController = require('../controllers/controller');
+const AssignmentController = require('../controllers/assignmentController');
 
-
-router.get('/:id',
-  AssignmentController.getOne,
-  (req, res) => res.json(res.locals.assignment)
-);
 
 router.put('/:id',
   AssignmentController.updateAssignment,
@@ -15,6 +10,11 @@ router.put('/:id',
 router.delete('/:id',
   AssignmentController.destroyAssignment,
   (req, res) => res.json(`deleted assignment ${req.params.id}`)
+);
+
+router.get('/:id',
+  AssignmentController.getOne,
+ (req, res) => res.json(res.locals.assignment)
 );
 
 router.post('/',
