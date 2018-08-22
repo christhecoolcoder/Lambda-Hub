@@ -25,3 +25,16 @@ export function deleteAssignment(id) {
             throw Error(err);
         });
 }
+
+export function saveAssignment(assignment) {
+    const opts = {
+      method: 'POST',
+      body: JSON.stringify(assignment),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+  
+    return fetch(`${BASE_URL}/assignments`, opts)
+      .then(resp => resp.json());
+  }
