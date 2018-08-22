@@ -7,7 +7,7 @@ class CreateAssignment extends Component {
     this.state = {
       name: null,
       date: null,
-      unit: null,
+      unit: 1,
       type: null,
       github_link: null,
       content: null, 
@@ -47,12 +47,13 @@ class CreateAssignment extends Component {
             min="2018-06-18" max="2018-09-11"
             value={this.state.date}
             onChange={this.handleChange} />
-          <input
-            type="number" 
-            name="unit"
-            min="1" max="4"
-            value={this.state.unit}
-            onChange={this.handleChange}/>
+          <select name="unit" value={this.state.unit} 
+                  onChange={this.handleChange}>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
           <input
             type="text" 
             name="type"
