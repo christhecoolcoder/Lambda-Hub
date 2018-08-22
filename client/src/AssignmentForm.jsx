@@ -3,7 +3,7 @@ import React from 'react';
 export default function AssignmentForm(props) {
     return (
         <form action="" method="post">
-        <input type="text" value="Title" name="title" id=""/>
+        <input type="text" placeholder="Title" name="title" id=""/>
             <br/>
             <br/>
         <input type="date" name="date" id=""/>

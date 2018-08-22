@@ -39,7 +39,7 @@ export default class App extends Component {
       case 'Assignments':
         return  <Assignments assignments={assignments} handleDelete={this.handleDelete} fetchOneAssignment={this.fetchOneAssignment}/>
         break;
-        case 'New Assignment':
+      case 'New Assignment':
         return   <AssignmentForm />
         break;
     }
