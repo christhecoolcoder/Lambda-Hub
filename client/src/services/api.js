@@ -38,3 +38,16 @@ export function saveAssignment(assignment) {
     return fetch(`${BASE_URL}/assignments`, opts)
       .then(resp => resp.json());
   }
+
+  export function updateAssignment(assignment) {
+    const opts = {
+      method: 'PUT',
+      body: JSON.stringify(assignment),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+  
+    return fetch(`${BASE_URL}/assignments/${assignment.id}`, opts)
+        .then(resp => resp.json());
+  }
