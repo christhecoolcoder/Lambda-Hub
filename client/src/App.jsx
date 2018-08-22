@@ -11,7 +11,6 @@ export default class App extends Component {
     super(props);
     this.state = {
       currentView: 'Assignments',
-      selectedAssignment: '',
       assignments: [],
     }
     this.handleDelete = this.handleDelete.bind(this);
@@ -40,6 +39,9 @@ export default class App extends Component {
       case 'Assignments':
         return  <Assignments assignments={assignments} handleDelete={this.handleDelete} fetchOneAssignment={this.fetchOneAssignment}/>
         break;
+        case 'New Assignment':
+        return   <AssignmentForm />
+        break;
     }
   }
 
@@ -50,6 +52,12 @@ export default class App extends Component {
           assignment,
           currentView: 'Detail', });
       });
+  }
+
+  assignmentForm() {
+  
+        this.setState({ 
+          currentView: 'New Assignment', });
   }
 
   handleDelete(id) {
@@ -63,13 +71,13 @@ export default class App extends Component {
 
     const links = [
       'Assignments',
-      'Detail'
+      'Detail',
+      'New Assignment'
     ];
     return (
       <div className="App">
         <h1>Hello LambdaHub!</h1>
-        <AssignmentForm />
-        <h1>Lambda Hub</h1>
+        <button onClick={() => this.assignmentForm()}>New Assignment</button>
         {this.determineWhichToRender()}
        
       </div>

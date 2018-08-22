@@ -1,13 +1,13 @@
 import React from 'react';
 
+
 export default function Assignments(props) {
-    
     return (
         
        props.assignments.map(assignment => {
            return (
                <div key={assignment.id}>
-                    
+                      
                    <h1>{assignment.name}</h1>
                    <h1>{assignment.date}</h1>
                    <h1>{assignment.github_link}</h1>
