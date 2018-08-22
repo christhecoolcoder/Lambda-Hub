@@ -16,6 +16,7 @@ module.exports = {
       `, id);
     },
     updateAssignment(assignment) {
+      debugger;
       return db.one(`
       UPDATE assignments
       SET 

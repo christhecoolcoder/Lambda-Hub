@@ -14,7 +14,7 @@ export default function Assignments(props) {
                    <h1>{assignment.type}</h1>
                    <h1>{assignment.unit}</h1>
                    <button onClick={() => props.fetchOneAssignment(assignment.id)}>Detail Page</button>
-                   <button>Update</button>
+                   <button onClick={() => props.selectAssignment(assignment)}>Update</button>
                    <button onClick={() => props.handleDelete(assignment.id)}>Delete</button>
                     
                </div>

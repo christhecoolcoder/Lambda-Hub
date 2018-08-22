@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import Assignments from './Assignments';
-import { fetchAssignments, fetchAssignment, deleteAssignment, saveAssignment } from './services/api';
+import { fetchAssignments, fetchAssignment, deleteAssignment, saveAssignment, updateAssignment } from './services/api';
 import CreateAssignment from './CreateAssignment';
+import EditAssignment from './EditAssignment';
 import AssignmentDetail from './AssignmentDetail';
 
 export default class App extends Component {
@@ -12,10 +13,13 @@ export default class App extends Component {
     this.state = {
       currentView: 'Assignments',
       assignments: [],
+      selectedAssignment: '',
     }
     this.handleDelete = this.handleDelete.bind(this);
     this.fetchOneAssignment = this.fetchOneAssignment.bind(this);
     this.newAssignment = this.newAssignment.bind(this);
+    this.updateAssignment = this.updateAssignment.bind(this);
+    this.selectAssignment = this.selectAssignment.bind(this);
   }
 
   fetchAllAssignments() {
@@ -38,6 +42,14 @@ export default class App extends Component {
         currentView: 'Detail', });
       });
     }
+  
+  selectAssignment(assignment) {
+    this.setState({
+      currentView: 'Edit Assignment',
+      selectedAssignment: assignment,
+      assignments: assignment 
+      });
+  }
 
     goToForm() {
       this.setState({  
@@ -62,23 +74,40 @@ export default class App extends Component {
           });
         });
     }
+
+    updateAssignment(assignment) {
+      updateAssignment(assignment)
+        .then(({assignments}) => fetchAssignments())
+        .then(({assignments}) => {
+          this.setState({
+            currentView: 'Assignments',
+            assignments: assignments
+          });
+        })
+    }
+
     determineWhichToRender() {
       const { currentView } = this.state;
-      const { assignments, assignment } = this.state;
+      const { assignments, selectedAssignment } = this.state;
   
       switch (currentView) {
         case 'Detail':
-          return <AssignmentDetail assignment={assignment} />
+          return <AssignmentDetail assignment={assignments} />
           break;
         case 'Assignments':
           return <div>
                    <button onClick={() => this.goToForm()}>Create an assignment</button>
-                   <Assignments assignments={assignments} handleDelete={this.handleDelete} fetchOneAssignment={this.fetchOneAssignment}/>
+                   <Assignments assignments={assignments} handleDelete={this.handleDelete} selectAssignment={this.selectAssignment} fetchOneAssignment={this.fetchOneAssignment}/>
                  </div>
           break;
         case 'Create Assignment':
           return <CreateAssignment onSubmit={this.newAssignment} />
           break;
+        case 'Edit Assignment':
+          return <EditAssignment
+            onSubmit={this.updateAssignment}
+            assignments={selectedAssignment} />
+        break;
       }
     }
     
@@ -87,7 +116,8 @@ export default class App extends Component {
       const links = [
         'Assignments',
         'Detail',
-        'Create Assignment'
+        'Create Assignment',
+        'Edit Assignment'
       ];
     return (
       <div className="App">
