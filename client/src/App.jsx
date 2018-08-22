@@ -3,12 +3,15 @@ import './App.css';
 import Assignments from './Assignments';
 import { fetchAssignments, fetchAssignment, deleteAssignment } from './services/api';
 import AssignmentForm from './AssignmentForm';
+import AssignmentDetail from './AssignmentDetail';
 
 export default class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
+      currentView: 'Assignments',
+      selectedAssignment: '',
       assignments: [],
     }
     this.handleDelete = this.handleDelete.bind(this);
@@ -26,10 +29,26 @@ export default class App extends Component {
     this.fetchAllAssignments();
   }
 
+  determineWhichToRender() {
+    const { currentView } = this.state;
+    const { assignments, assignment } = this.state;
+
+    switch (currentView) {
+      case 'Detail':
+        return <AssignmentDetail assignment={assignment} />
+        break;
+      case 'Assignments':
+        return  <Assignments assignments={assignments} handleDelete={this.handleDelete} fetchOneAssignment={this.fetchOneAssignment}/>
+        break;
+    }
+  }
+
   fetchOneAssignment(id) {
     fetchAssignment(id)
       .then(assignment => {
-        this.setState({ assignment });
+        this.setState({  
+          assignment,
+          currentView: 'Detail', });
       });
   }
 
@@ -41,11 +60,18 @@ export default class App extends Component {
   }
 
   render() {
+
+    const links = [
+      'Assignments',
+      'Detail'
+    ];
     return (
       <div className="App">
         <h1>Hello LambdaHub!</h1>
         <AssignmentForm />
-        <Assignments assignments={this.state.assignments} handleDelete={this.handleDelete} fetchOneAssignment={this.fetchOneAssignment}/>
+        <h1>Lambda Hub</h1>
+        {this.determineWhichToRender()}
+       
       </div>
     );
   }
