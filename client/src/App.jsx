@@ -71,7 +71,10 @@ export default class App extends Component {
           return <AssignmentDetail assignment={assignment} />
           break;
         case 'Assignments':
-          return <Assignments assignments={assignments} handleDelete={this.handleDelete} fetchOneAssignment={this.fetchOneAssignment}/>
+          return <div>
+                   <button onClick={() => this.goToForm()}>Create an assignment</button>
+                   <Assignments assignments={assignments} handleDelete={this.handleDelete} fetchOneAssignment={this.fetchOneAssignment}/>
+                 </div>
           break;
         case 'Create Assignment':
           return <CreateAssignment onSubmit={this.newAssignment} />
@@ -89,9 +92,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <h1>Hello LambdaHub!</h1>
-        <button onClick={() => this.goToForm()}>Create an assignment</button>
-        {this.determineWhichToRender()}
-       
+        {this.determineWhichToRender()}       
       </div>
     );
   }
