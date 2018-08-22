@@ -38,6 +38,12 @@ export default class App extends Component {
         currentView: 'Detail', });
       });
     }
+
+    goToForm() {
+      this.setState({  
+        currentView: 'Create Assignment', });
+      
+    }
     
     handleDelete(id) {
       deleteAssignment(id)
@@ -65,11 +71,10 @@ export default class App extends Component {
           return <AssignmentDetail assignment={assignment} />
           break;
         case 'Assignments':
-          return  <Assignments assignments={assignments} handleDelete={this.handleDelete} fetchOneAssignment={this.fetchOneAssignment}/>
+          return <Assignments assignments={assignments} handleDelete={this.handleDelete} fetchOneAssignment={this.fetchOneAssignment}/>
           break;
         case 'Create Assignment':
-          return <CreateAssignment 
-            onSubmit={this.newAssignment} />;
+          return <CreateAssignment onSubmit={this.newAssignment} />
           break;
       }
     }
@@ -84,8 +89,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <h1>Hello LambdaHub!</h1>
-        <CreateAssignment  onSubmit={this.newAssignment} />
-        <h1>Lambda Hub</h1>
+        <button onClick={() => this.goToForm()}>Create an assignment</button>
         {this.determineWhichToRender()}
        
       </div>
