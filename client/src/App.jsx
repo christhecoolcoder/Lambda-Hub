@@ -88,11 +88,11 @@ export default class App extends Component {
 
     determineWhichToRender() {
       const { currentView } = this.state;
-      const { assignments, selectedAssignment } = this.state;
+      const { assignments, assignment, selectedAssignment } = this.state;
   
       switch (currentView) {
         case 'Detail':
-          return <AssignmentDetail assignment={assignments} />
+          return <AssignmentDetail assignment={assignment} />
           break;
         case 'Assignments':
           return <div>
@@ -121,7 +121,7 @@ export default class App extends Component {
       ];
     return (
       <div className="App">
-        <h1>Hello LambdaHub!</h1>
+        <h1 class='welcome-text'>LambdaHub</h1>
         {this.determineWhichToRender()}       
       </div>
     );
