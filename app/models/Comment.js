@@ -3,6 +3,7 @@ const { db, pgp } = require('../config/connection');
 module.exports = {
 
     index(id) {
+        console.log(id);
         return db.manyOrNone(
           `SELECT *
           FROM comments
@@ -10,14 +11,16 @@ module.exports = {
           , id);
     },
 
-    post(comment, id) {
+    // post(comment, id) {
+        post(comment) {
         return db.one(`
         INSERT INTO comments
         (name, comment, assignment_id)
         VALUES
         ($/name/, $/comment/, $/assignment_id/)
         RETURNING *
-        `, comment, id);
+        `, comment);
+        // `, comment, id);
     },
     destroy(id) {
         return db.none(`

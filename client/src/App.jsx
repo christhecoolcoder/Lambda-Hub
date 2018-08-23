@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Assignments from './Assignments';
-import { fetchAssignments, fetchAssignment, deleteAssignment, saveAssignment } from './services/api';
+import { saveComment, fetchComments, fetchAssignments, fetchAssignment, deleteAssignment, saveAssignment } from './services/api';
 import CreateAssignment from './CreateAssignment';
 import AssignmentDetail from './AssignmentDetail';
 
@@ -12,10 +12,12 @@ export default class App extends Component {
     this.state = {
       currentView: 'Assignments',
       assignments: [],
+      comments: [],
     }
     this.handleDelete = this.handleDelete.bind(this);
     this.fetchOneAssignment = this.fetchOneAssignment.bind(this);
     this.newAssignment = this.newAssignment.bind(this);
+    this.createComment = this.createComment.bind(this);
   }
 
   fetchAllAssignments() {
@@ -62,13 +64,25 @@ export default class App extends Component {
           });
         });
     }
+    createComment(comment) {
+      saveComment(comment)
+      .then((comments) => fetchComments(comment.assignment_id))
+      .then((comments) => {
+        console.log(comments);
+        this.setState({
+          currentView: 'Detail',
+          comments: comments,
+        });
+      });
+    }
+    
     determineWhichToRender() {
       const { currentView } = this.state;
-      const { assignments, assignment } = this.state;
+      const { assignments, assignment, comments } = this.state;
   
       switch (currentView) {
         case 'Detail':
-          return <AssignmentDetail assignment={assignment} />
+          return <AssignmentDetail assignment={assignment} onSubmit={this.createComment} comments={this.state.comments}/>
           break;
         case 'Assignments':
           return <div>
