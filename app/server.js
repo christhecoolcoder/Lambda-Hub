@@ -5,7 +5,6 @@ const cors = require('cors');
 const AssignmentRouter = require('./routes/assignmentRouter');
 const CommentRouter = require('./routes/CommentRouter');
 
-
 const PORT = process.env.PORT || 3001;
 
 
