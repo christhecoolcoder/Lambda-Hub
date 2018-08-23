@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 
-class CreateAssignment extends Component {
+class EditAssignment extends Component {
   constructor(props) {
     super(props);
 
+    const { assignments } = props;
     this.state = {
-      name: '',
-      date: '',
-      unit: '',
-      type: '',
-      github_link: '',
-      content: '', 
+      name: assignments.name,
+      id: assignments.id,
+      date: assignments.date,
+      unit: assignments.unit,
+      type: assignments.type,
+      github_link: assignments.github_link,
+      content: assignments.content,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -19,11 +21,20 @@ class CreateAssignment extends Component {
 
   handleSubmit(ev) {
     ev.preventDefault();
-    //console.log(this.props.onSubmit)
-    this.props.onSubmit(this.state);
+    const data = {
+      name: this.state.name,
+      id: this.state.id,
+      date: this.state.date,
+      unit: this.state.unit,
+      type: this.state.type,
+      github_link: this.state.githublink,
+      content: this.state.content,
+    }
+    this.props.onSubmit(data);
   }
 
   handleChange(ev) {
+    ev.preventDefault();
     const { name, value } = ev.target;
     this.setState({
       [name]: value
@@ -54,7 +65,6 @@ class CreateAssignment extends Component {
             <label for="unit">Unit:</label>
           <select name="unit" value={this.state.unit} 
                   onChange={this.handleChange}>
-            <option value="null" />
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -83,11 +93,11 @@ class CreateAssignment extends Component {
             onChange={this.handleChange} />
           <br />
 
-          <input type="submit" value="Create Assignment" />
+          <input type="submit" value="Update Assignment" />
         </form>
       </div>
     );
   }
 }
 
-export default CreateAssignment;
+export default EditAssignment;

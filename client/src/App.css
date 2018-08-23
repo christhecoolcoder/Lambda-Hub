@@ -1,28 +1,71 @@
+* {
+  border: none;
+}
+
 .App {
   text-align: center;
+  background-color: rgb(76, 76, 76);
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+
+.assignments-body {
+  background-color: rgb(76, 76, 76);
+  font-family: computer7;
+  color: rgb(0, 145, 185);
+}
+.welcome-text{
+  background-color: rgb(76, 76, 76);
+  color: rgb(143, 214, 0);
+  font-size: 100px;
+  letter-spacing: 20px;
+  font-family: computer7;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+.assignment-text{
+  color: rgb(222, 201, 0);
+  font-size: 40px;
+  text-decoration: underline;
+  font-family: computer7;
+}
+
+.welcome-body{
+  background-color: rgb(76, 76, 76);
   color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
+.create-assignment-text{
+  font-size: 15px;
 }
 
-.App-intro {
-  font-size: large;
+button{
+  font-size: 30px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+label{
+  font-family: computer7;
+  color: rgb(222, 201, 0);
+}
+
+.form-body{
+  background-color: rgb(76, 76, 76);
+  
+}
+
+h1{
+  font-family: computer7;
+  color: rgb(222, 201, 0);
+}
+
+h2{
+  font-family: computer7;
+  text-decoration: underline;
+  color: rgb(222, 201, 0);
+}
+
+a:link {
+  color: red;
+}
+
+a:visited {
+  color: green;
 }

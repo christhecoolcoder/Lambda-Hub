@@ -38,24 +38,42 @@ export function saveAssignment(assignment) {
     return fetch(`${BASE_URL}/assignments`, opts)
       .then(resp => resp.json());
   }
+
   export function fetchComments(id) {
-      console.log(id);
-    return fetch(BASE_URL + `/comments/`+ id)
-        .then(res => res.json())
-        .catch(err => {
-            console.log(err);
-    });
+    console.log(id);
+  return fetch(BASE_URL + `/comments/`+ id)
+      .then(res => res.json())
+      .catch(err => {
+          console.log(err);
+  });
 }
+
+  
 export function saveComment(comment) {
     const opts = {
       method: 'POST',
       body: JSON.stringify(comment),
+
       headers: {
         'Content-Type': 'application/json'
       }
     };
-  
+      
     return fetch(`${BASE_URL}/comments/${comment.assignment_id}`, opts)
     //return fetch(`${BASE_URL}/comments/1`, opts)  hits db with this
        .then(resp => resp.json());
+ }
+  
+    export function updateAssignment(assignment) {
+    const opts = {
+      method: 'PUT',
+      body: JSON.stringify(assignment),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    return fetch(`${BASE_URL}/assignments/${assignment.id}`, opts)
+        .then(resp => resp.json());
+
   }
