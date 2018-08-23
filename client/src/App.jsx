@@ -6,8 +6,7 @@ import { fetchAssignments,
          deleteAssignment,
          saveAssignment,
          fetchComments,
-         deleteComment
-         } from './services/api';
+         deleteComment } from './services/api';
 import CreateAssignment from './CreateAssignment';
 import AssignmentDetail from './AssignmentDetail';
 import Comments from './Comments';
