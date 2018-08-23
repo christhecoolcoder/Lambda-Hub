@@ -40,14 +40,31 @@ export function saveAssignment(assignment) {
   }
 
   export function fetchComments(assignmentId) {
-    return fetch(BASE_URL + '/comments/' + assignmentId)
-        .then(res => res.json())
-        .catch(err => {
-            console.log(err);
-    });
+    console.log(assignmentId);
+  return fetch(BASE_URL + '/comments/' + assignmentId)
+      .then(res => res.json())
+      .catch(err => {
+          console.log(err);
+  });
 }
 
-export function deleteComment(id) {
+  
+export function saveComment(comment) {
+    const opts = {
+      method: 'POST',
+      body: JSON.stringify(comment),
+
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+      
+    return fetch(`${BASE_URL}/comments/${comment.assignment_id}`, opts)
+    //return fetch(`${BASE_URL}/comments/1`, opts)  hits db with this
+       .then(resp => resp.json());
+ }
+
+ export function deleteComment(id) {
     const opts = {
         method: 'DELETE',
     }
@@ -55,9 +72,8 @@ export function deleteComment(id) {
         .catch(err => {
             throw Error(err);
         });
-}
-
-  export function updateAssignment(assignment) {
+} 
+    export function updateAssignment(assignment) {
     const opts = {
       method: 'PUT',
       body: JSON.stringify(assignment),
@@ -65,7 +81,8 @@ export function deleteComment(id) {
         'Content-Type': 'application/json'
       }
     };
-  
+
     return fetch(`${BASE_URL}/assignments/${assignment.id}`, opts)
         .then(resp => resp.json());
+
   }

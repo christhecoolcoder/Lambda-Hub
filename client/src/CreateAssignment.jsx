@@ -5,12 +5,12 @@ class CreateAssignment extends Component {
     super(props);
 
     this.state = {
-      name: null,
-      date: null,
-      unit: null,
-      type: null,
-      github_link: null,
-      content: null, 
+      name: '',
+      date: '',
+      unit: '',
+      type: '',
+      github_link: '',
+      content: '', 
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -19,7 +19,7 @@ class CreateAssignment extends Component {
 
   handleSubmit(ev) {
     ev.preventDefault();
-    console.log(this.props.onSubmit)
+    //console.log(this.props.onSubmit)
     this.props.onSubmit(this.state);
   }
 

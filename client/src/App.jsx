@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import Assignments from './Assignments';
-import { fetchAssignments,
+import { saveComment,
+         fetchAssignments,
          fetchAssignment, 
          deleteAssignment,
          saveAssignment, 
@@ -24,8 +25,10 @@ export default class App extends Component {
       selectedAssignment: '',
     }
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleCommentDelete = this.handleCommentDelete.bind(this);
     this.fetchOneAssignment = this.fetchOneAssignment.bind(this);
     this.newAssignment = this.newAssignment.bind(this);
+    this.createComment = this.createComment.bind(this);
     this.updateAssignment = this.updateAssignment.bind(this);
     this.selectAssignment = this.selectAssignment.bind(this);
   }
@@ -44,13 +47,15 @@ export default class App extends Component {
   handleCommentDelete(id) {
     deleteComment(id)
     .then(res => {
-      this.fetchAllComments();
+      this.setState({
+        comments: this.state.comments.filter(comment => comment.id !== id)
+      })
     })
   }
 
   fetchAllComments(assignmentId) {
     fetchComments(assignmentId)
-      .then(({comments}) => {
+      .then(comments  => {
         this.setState({ comments });
       });
   }
@@ -58,9 +63,13 @@ export default class App extends Component {
   fetchOneAssignment(id) {
     fetchAssignment(id)
     .then(assignment => {
-      this.setState({  
+      fetchComments(assignment.id)
+      .then(comments => {
+      this.setState({   
         assignment,
-        currentView: 'Detail', });
+        currentView: 'Detail',
+        comments });
+      })
       });
     }
   
@@ -96,6 +105,17 @@ export default class App extends Component {
         });
     }
 
+    createComment(comment) {
+      saveComment(comment)
+      .then((comments) => fetchComments(comment.assignment_id))
+      .then((comments) => {
+        console.log(comments);
+        this.setState({
+          currentView: 'Detail',
+          comments: comments,
+        });
+      });
+    }
     updateAssignment(assignment) {
       updateAssignment(assignment)
         .then(({assignments}) => fetchAssignments())
@@ -114,9 +134,10 @@ export default class App extends Component {
       switch (currentView) {
         case 'Detail':
         return <div>
-                <AssignmentDetail assignment={assignment} />
+                <AssignmentDetail assignment={assignment} onSubmit={this.createComment} />
                 <Comments comments={comments} handleCommentDelete={this.handleCommentDelete} />
               </div>
+
           break;
         case 'Assignments':
           return <div>
@@ -145,7 +166,7 @@ export default class App extends Component {
       ];
     return (
       <div className="App">
-        <h1 class='welcome-text'>LAMBDA-HUB</h1>
+        <h1 className='welcome-text'>LAMBDA-HUB</h1>
         {this.determineWhichToRender()}       
       </div>
     );
