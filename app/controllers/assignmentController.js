@@ -24,7 +24,8 @@ module.exports = {
       date: req.body.date,
       type: req.body.type,
       unit: req.body.unit,
-      github_link: req.body.github_link
+      github_link: req.body.github_link,
+      content: req.body.content,
     }
     db.updateAssignment(data)
       .then(assignment => {
@@ -39,6 +40,7 @@ module.exports = {
       date: req.body.date,
       type: req.body.type,
       unit: req.body.unit,
+      content: req.body.content,
       github_link: req.body.github_link
     }
 

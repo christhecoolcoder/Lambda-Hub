@@ -24,6 +24,7 @@ module.exports = {
       date = $/date/,
       github_link = $/github_link/,
       type = $/type/,
+      content = $/content/,
       unit = $/unit/
       WHERE id = $/id/
       RETURNING *
@@ -32,9 +33,9 @@ module.exports = {
     createAssignment(assignment) {
       return db.one(`
       INSERT INTO assignments
-      (name, date, type, unit, github_link)
+      (name, date, type, unit, github_link, content)
       VALUES
-      ($/name/, $/date/, $/type/, $/unit/, $/github_link/)
+      ($/name/, $/date/, $/type/, $/unit/, $/github_link/, $/content/)
       RETURNING *
       `, assignment);
     },
