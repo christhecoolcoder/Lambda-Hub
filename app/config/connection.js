@@ -1,6 +1,6 @@
 const pgp = require('pg-promise')();
 
-let opts = process.env.DATABASE_URL || {
+const opts = process.env.DATABASE_URL || {
   database: 'lambda_hub'
 };
 
