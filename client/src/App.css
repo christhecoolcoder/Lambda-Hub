@@ -61,3 +61,11 @@ h2{
   text-decoration: underline;
   color: rgb(222, 201, 0);
 }
+
+a:link {
+  color: red;
+}
+
+a:visited {
+  color: green;
+}
