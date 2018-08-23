@@ -25,6 +25,7 @@ export default class App extends Component {
       selectedAssignment: '',
     }
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleCommentDelete = this.handleCommentDelete.bind(this);
     this.fetchOneAssignment = this.fetchOneAssignment.bind(this);
     this.newAssignment = this.newAssignment.bind(this);
     this.createComment = this.createComment.bind(this);
@@ -52,7 +53,7 @@ export default class App extends Component {
 
   fetchAllComments(assignmentId) {
     fetchComments(assignmentId)
-      .then(({comments}) => {
+      .then(( comments ) => {
         this.setState({ comments });
       });
   }
@@ -62,7 +63,7 @@ export default class App extends Component {
     .then(assignment => {
       this.setState({  
         assignment,
-        currentView: 'Detail', });
+        currentView: 'Detail' });
       });
     }
   
@@ -97,7 +98,7 @@ export default class App extends Component {
           });
         });
     }
-    
+
     createComment(comment) {
       saveComment(comment)
       .then((comments) => fetchComments(comment.assignment_id))
@@ -127,7 +128,7 @@ export default class App extends Component {
       switch (currentView) {
         case 'Detail':
         return <div>
-                <AssignmentDetail assignment={assignment} onSubmit={this.createComment} comments={this.state.comments}/>
+                <AssignmentDetail assignment={assignment} onSubmit={this.createComment} />
                 <Comments comments={comments} handleCommentDelete={this.handleCommentDelete} />
               </div>
 
@@ -159,7 +160,7 @@ export default class App extends Component {
       ];
     return (
       <div className="App">
-        <h1 class='welcome-text'>LambdaHub</h1>
+        <h1 className='welcome-text'>LambdaHub</h1>
         {this.determineWhichToRender()}       
       </div>
     );

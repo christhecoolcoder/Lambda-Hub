@@ -63,7 +63,16 @@ export function saveComment(comment) {
     //return fetch(`${BASE_URL}/comments/1`, opts)  hits db with this
        .then(resp => resp.json());
  }
-  
+
+ export function deleteComment(id) {
+    const opts = {
+        method: 'DELETE',
+    }
+    return fetch(`${BASE_URL}/comments/${id}`, opts)
+        .catch(err => {
+            throw Error(err);
+        });
+} 
     export function updateAssignment(assignment) {
     const opts = {
       method: 'PUT',
