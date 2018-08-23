@@ -3,7 +3,7 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const AssignmentRouter = require('./routes/assignmentRouter');
-const CommentRouter = require('./routes/CommentRouter');
+const CommentRouter = require('./routes/commentRouter');
 
 const PORT = process.env.PORT || 3001;
 
