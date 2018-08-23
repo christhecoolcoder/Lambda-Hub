@@ -8,6 +8,14 @@ export function fetchAssignments() {
     });
 }
 
+export function fetchComments() {
+    return fetch(BASE_URL + '/comments')
+        .then(res => res.json())
+        .catch(err => {
+            console.log(err);
+    });
+}
+
 export function fetchAssignment(id) {
     return fetch(BASE_URL + '/assignments/' + id)
         .then(res => res.json())
@@ -21,6 +29,16 @@ export function deleteAssignment(id) {
         method: 'DELETE',
     }
     return fetch(`${BASE_URL}/assignments/${id}`, opts)
+        .catch(err => {
+            throw Error(err);
+        });
+}
+
+export function deleteComment(id) {
+    const opts = {
+        method: 'DELETE',
+    }
+    return fetch(`${BASE_URL}/comments/${id}`, opts)
         .catch(err => {
             throw Error(err);
         });

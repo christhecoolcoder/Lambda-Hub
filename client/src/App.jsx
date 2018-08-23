@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
 import Assignments from './Assignments';
-import { fetchAssignments, fetchAssignment, deleteAssignment, saveAssignment } from './services/api';
+import { fetchAssignments,
+         fetchAssignment,
+         deleteAssignment,
+         saveAssignment,
+         fetchComments,
+         deleteComment
+         } from './services/api';
 import CreateAssignment from './CreateAssignment';
 import AssignmentDetail from './AssignmentDetail';
+import Comments from './Comments';
 
 export default class App extends Component {
 
@@ -12,8 +19,10 @@ export default class App extends Component {
     this.state = {
       currentView: 'Assignments',
       assignments: [],
+      comments: []
     }
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleCommentDelete = this.handleCommentDelete.bind(this);
     this.fetchOneAssignment = this.fetchOneAssignment.bind(this);
     this.newAssignment = this.newAssignment.bind(this);
   }
@@ -25,11 +34,17 @@ export default class App extends Component {
       });
   }
 
+  fetchAllComments() {
+    fetchComments()
+      .then(({comments}) => {
+        this.setState({ comments });
+      });
+  }
+
   componentDidMount() {
     this.fetchAllAssignments();
   }
 
-  
   fetchOneAssignment(id) {
     fetchAssignment(id)
     .then(assignment => {
@@ -42,13 +57,19 @@ export default class App extends Component {
     goToForm() {
       this.setState({  
         currentView: 'Create Assignment', });
-      
     }
     
     handleDelete(id) {
       deleteAssignment(id)
       .then(res => {
         this.fetchAllAssignments();
+      })
+    }
+
+    handleCommentDelete(id) {
+      deleteComment(id)
+      .then(res => {
+        this.fetchAllComments();
       })
     }
 
@@ -62,13 +83,17 @@ export default class App extends Component {
           });
         });
     }
+
     determineWhichToRender() {
       const { currentView } = this.state;
       const { assignments, assignment } = this.state;
   
       switch (currentView) {
         case 'Detail':
-          return <AssignmentDetail assignment={assignment} />
+          return <div>
+                <AssignmentDetail assignment={assignment} />
+                <Comments comments={comments} handleCommentDelete={this.handleCommentDelete} />
+                </div>
           break;
         case 'Assignments':
           return <div>
