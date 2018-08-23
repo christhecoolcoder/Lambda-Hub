@@ -10,7 +10,7 @@ export default function Assignments(props) {
 
           <h1>{assignment.name}</h1>
 
-          <button onClick={() => props.fetchOneAssignment(assignment.id)}>Detail Page</button>
+          <button onClick={() => props.fetchOneAssignment(assignment.id)}>Details</button>
           <button onClick={() => props.selectAssignment(assignment)}>Update</button>
           <button onClick={() => props.handleDelete(assignment.id)}>Delete</button>
 

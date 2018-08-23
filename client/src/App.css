@@ -1,12 +1,17 @@
 * {
   border: none;
+  
 }
 
 .App {
   text-align: center;
   background-color: rgb(76, 76, 76);
+
 }
 
+.button-div{
+  letter-spacing: 10px;
+}
 
 .assignments-body {
   background-color: rgb(76, 76, 76);
@@ -19,6 +24,7 @@
   font-size: 100px;
   letter-spacing: 20px;
   font-family: computer7;
+  text-shadow: 6px 6px black;
 }
 
 .assignment-text{
@@ -39,6 +45,10 @@
 
 button{
   font-size: 30px;
+  background-color: rgb(76, 76, 76);
+  font-family: computer7;
+  text-shadow: 3px 4px black;
+  color: rgb(0, 145, 185)
 }
 
 label{

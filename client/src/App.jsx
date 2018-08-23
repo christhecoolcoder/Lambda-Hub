@@ -145,7 +145,7 @@ export default class App extends Component {
       ];
     return (
       <div className="App">
-        <h1 class='welcome-text'>LambdaHub</h1>
+        <h1 class='welcome-text'>LAMBDA-HUB</h1>
         {this.determineWhichToRender()}       
       </div>
     );
