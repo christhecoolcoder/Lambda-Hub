@@ -86,14 +86,14 @@ export default class App extends Component {
 
     determineWhichToRender() {
       const { currentView } = this.state;
-      const { assignments, assignment } = this.state;
+      const { assignments, assignment, comments } = this.state;
   
       switch (currentView) {
         case 'Detail':
           return <div>
-                <AssignmentDetail assignment={assignment} />
-                <Comments comments={comments} handleCommentDelete={this.handleCommentDelete} />
-                </div>
+                  <AssignmentDetail assignment={assignment} />
+                  <Comments comments={comments} handleCommentDelete={this.handleCommentDelete} />
+                 </div>
           break;
         case 'Assignments':
           return <div>
