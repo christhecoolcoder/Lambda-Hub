@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
 import Assignments from './Assignments';
-import { fetchAssignments, fetchAssignment, deleteAssignment, saveAssignment, updateAssignment } from './services/api';
+import { fetchAssignments,
+         fetchAssignment, 
+         deleteAssignment,
+         saveAssignment, 
+         updateAssignment,
+         fetchComments, 
+         deleteComment } from './services/api';
 import CreateAssignment from './CreateAssignment';
 import EditAssignment from './EditAssignment';
 import AssignmentDetail from './AssignmentDetail';
+import Comments from './Comments';
 
 export default class App extends Component {
 
@@ -13,6 +20,7 @@ export default class App extends Component {
     this.state = {
       currentView: 'Assignments',
       assignments: [],
+      comments: [],
       selectedAssignment: '',
     }
     this.handleDelete = this.handleDelete.bind(this);
@@ -33,6 +41,19 @@ export default class App extends Component {
     this.fetchAllAssignments();
   }
 
+  handleCommentDelete(id) {
+    deleteComment(id)
+    .then(res => {
+      this.fetchAllComments();
+    })
+  }
+
+  fetchAllComments(assignmentId) {
+    fetchComments(assignmentId)
+      .then(({comments}) => {
+        this.setState({ comments });
+      });
+  }
   
   fetchOneAssignment(id) {
     fetchAssignment(id)
@@ -88,11 +109,14 @@ export default class App extends Component {
 
     determineWhichToRender() {
       const { currentView } = this.state;
-      const { assignments, assignment, selectedAssignment } = this.state;
+      const { assignments, assignment, comments, selectedAssignment } = this.state;
   
       switch (currentView) {
         case 'Detail':
-          return <AssignmentDetail assignment={assignment} />
+        return <div>
+                <AssignmentDetail assignment={assignment} />
+                <Comments comments={comments} handleCommentDelete={this.handleCommentDelete} />
+              </div>
           break;
         case 'Assignments':
           return <div>

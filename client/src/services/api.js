@@ -39,6 +39,24 @@ export function saveAssignment(assignment) {
       .then(resp => resp.json());
   }
 
+  export function fetchComments(assignmentId) {
+    return fetch(BASE_URL + '/comments/' + assignmentId)
+        .then(res => res.json())
+        .catch(err => {
+            console.log(err);
+    });
+}
+
+export function deleteComment(id) {
+    const opts = {
+        method: 'DELETE',
+    }
+    return fetch(`${BASE_URL}/comments/${id}`, opts)
+        .catch(err => {
+            throw Error(err);
+        });
+}
+
   export function updateAssignment(assignment) {
     const opts = {
       method: 'PUT',
