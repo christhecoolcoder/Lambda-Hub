@@ -38,17 +38,19 @@ class CreateComment extends Component {
       <h2>Add Comment</h2>
       <form onSubmit={this.handleSubmit} >
       <input
-        type="text" 
+        type="text"
+        placeholder="name" 
         name="name"
         value={this.state.name}
         onChange={this.handleChange} 
          />
-      <input
-        type="text" 
+         <br/>
+         <textarea placeholder="comment"
         name="comment"
         value={this.state.comment}
-        onChange={this.handleChange} 
-         />
+        onChange={this.handleChange}  rows="4" cols="50">
+        </textarea>
+        <br/>
       <input
         type="hidden" 
         name="assignment_id"

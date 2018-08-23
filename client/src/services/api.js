@@ -39,9 +39,9 @@ export function saveAssignment(assignment) {
       .then(resp => resp.json());
   }
 
-  export function fetchComments(id) {
-    console.log(id);
-  return fetch(BASE_URL + `/comments/`+ id)
+  export function fetchComments(assignmentId) {
+    console.log(assignmentId);
+  return fetch(BASE_URL + '/comments/' + assignmentId)
       .then(res => res.json())
       .catch(err => {
           console.log(err);

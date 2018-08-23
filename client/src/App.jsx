@@ -47,13 +47,15 @@ export default class App extends Component {
   handleCommentDelete(id) {
     deleteComment(id)
     .then(res => {
-      this.fetchAllComments();
+      this.setState({
+        comments: this.state.comments.filter(comment => comment.id !== id)
+      })
     })
   }
 
   fetchAllComments(assignmentId) {
     fetchComments(assignmentId)
-      .then(( comments ) => {
+      .then(comments  => {
         this.setState({ comments });
       });
   }
@@ -61,9 +63,13 @@ export default class App extends Component {
   fetchOneAssignment(id) {
     fetchAssignment(id)
     .then(assignment => {
-      this.setState({  
+      fetchComments(assignment.id)
+      .then(comments => {
+      this.setState({   
         assignment,
-        currentView: 'Detail' });
+        currentView: 'Detail',
+        comments });
+      })
       });
     }
   
