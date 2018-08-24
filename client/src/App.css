@@ -9,6 +9,21 @@
 
 }
 
+.enter-button{
+  font-size: 80px;
+  color: rgb(211, 86, 69);
+  /* text-decoration: none; */
+}
+
+.splash-image{
+  height: 600px;
+  width: auto;
+  background-image: url("splash page new.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  
+}
+
 .button-div{
   letter-spacing: 10px;
 }
@@ -39,6 +54,25 @@
   color: white;
 }
 
+.comment-text{
+  font-style: italic;
+  font-size: 20px;
+  color: white;
+  font-family: computer7;
+}
+
+.delete-button{
+  color: red;
+}
+
+.comment-name{
+  font-size: 30px;
+  background-color: rgb(76, 76, 76);
+  font-family: computer7;
+  text-shadow: 3px 4px black;
+  color: rgb(0, 145, 185)
+}
+
 .create-assignment-text{
   font-size: 15px;
 }
@@ -51,15 +85,33 @@ button{
   color: rgb(0, 145, 185)
 }
 
+button:hover {
+  cursor: pointer;
+}
+
+
+
+.create-button:hover{
+  cursor: pointer;
+}
+
 label{
   font-family: computer7;
   color: rgb(222, 201, 0);
+  display: block;
 }
 
 .form-body{
   background-color: rgb(76, 76, 76);
   
 }
+
+.comment-title{
+  font-family: computer7;
+  text-decoration: underline;
+  color: rgb(0, 145, 185)
+}
+
 
 h1{
   font-family: computer7;
@@ -72,6 +124,7 @@ h2{
   color: rgb(222, 201, 0);
 }
 
+
 a:link {
   color: red;
 }
@@ -79,3 +132,4 @@ a:link {
 a:visited {
   color: green;
 }
+

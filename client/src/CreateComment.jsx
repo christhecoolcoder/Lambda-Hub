@@ -15,13 +15,13 @@ class CreateComment extends Component {
   }
   componentDidMount() {
     this.setState({
-      assignment_id:  this.props.assignment_id
+      assignment_id: this.props.assignment_id
     });
   }
   handleSubmit(ev) {
     ev.preventDefault();
     //console.log(this.state.assignment_id);
-    
+
     this.props.onSubmit(this.state);
     //this.props.onSubmit(this.state);
   }
@@ -35,30 +35,32 @@ class CreateComment extends Component {
   render() {
     return (
       <div>
-      <h2>Add Comment</h2>
-      <form onSubmit={this.handleSubmit} >
-      <input
-        type="text"
-        placeholder="name" 
-        name="name"
-        value={this.state.name}
-        onChange={this.handleChange} 
-         />
-         <br/>
-         <textarea placeholder="comment"
-        name="comment"
-        value={this.state.comment}
-        onChange={this.handleChange}  rows="4" cols="50">
-        </textarea>
-        <br/>
-      <input
-        type="hidden" 
-        name="assignment_id"
-        value={this.props.assignment_id}
-        />
-      <input type="submit" value="Add Comment" />
-    </form>
-    </div>
+        <h1 className='comment-title'>Add Comment</h1>
+        <form onSubmit={this.handleSubmit} >
+          <input
+            type="text"
+            placeholder="name"
+            name="name"
+            value={this.state.name}
+            onChange={this.handleChange}
+          />
+          <br />
+          <br />
+          <textarea placeholder="comment"
+            name="comment"
+            value={this.state.comment}
+            onChange={this.handleChange} rows="4" cols="50">
+          </textarea>
+          <br />
+          <br />
+          <input
+            type="hidden"
+            name="assignment_id"
+            value={this.props.assignment_id}
+          />
+          <input className='create-button' type="submit" value="Add Comment" />
+        </form>
+      </div>
     );
   }
 }
