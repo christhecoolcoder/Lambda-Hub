@@ -5,12 +5,12 @@ class CreateAssignment extends Component {
     super(props);
 
     this.state = {
-      name: '',
-      date: '',
-      unit: '',
-      type: '',
-      github_link: '',
-      content: '', 
+      name: null,
+      date: null,
+      unit: null,
+      type: null,
+      github_link: null,
+      content: null,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -19,7 +19,7 @@ class CreateAssignment extends Component {
 
   handleSubmit(ev) {
     ev.preventDefault();
-    //console.log(this.props.onSubmit)
+    console.log(this.props.onSubmit)
     this.props.onSubmit(this.state);
   }
 
@@ -34,26 +34,26 @@ class CreateAssignment extends Component {
 
     return (
       <div>
-        <h2>Create Assignment</h2>
+        <h1 className='welcome-text'>LAMBDA-HUB</h1>
         <form onSubmit={this.handleSubmit} >
-        <label for="name">Name:</label>
+          <label for="name">Name:</label>
           <input
-            type="text" 
+            type="text"
             name="name"
             value={this.state.name}
             onChange={this.handleChange} />
-            <br />
-            <label for="date">Date:</label>
+          <br />
+          <label for="date">Date:</label>
           <input
-            type="date" 
+            type="date"
             name="date"
             min="2018-06-18" max="2018-09-11"
             value={this.state.date}
             onChange={this.handleChange} />
-            <br />
-            <label for="unit">Unit:</label>
-          <select name="unit" value={this.state.unit} 
-                  onChange={this.handleChange}>
+          <br />
+          <label for="unit">Unit:</label>
+          <select name="unit" value={this.state.unit}
+            onChange={this.handleChange}>
             <option value="null" />
             <option value="1">1</option>
             <option value="2">2</option>
@@ -63,27 +63,27 @@ class CreateAssignment extends Component {
           <br />
           <label for="type">Type:</label>
           <input
-            type="text" 
+            type="text"
             name="type"
             value={this.state.type}
             onChange={this.handleChange} />
-            <br />
-            <label for="github_link">Repo on Github:</label>
+          <br />
+          <label for="github_link">Repo on Github:</label>
           <input
-            type="text" 
+            type="text"
             name="github_link"
             value={this.state.github_link}
             onChange={this.handleChange} />
-            <br />
-            <label for="content">Info:</label>
+          <br />
+          <label for="content">Info:</label>
           <textarea
-            type="text" 
+            type="text"
             name="content"
             value={this.state.content}
             onChange={this.handleChange} />
           <br />
 
-          <input type="submit" value="Create Assignment" />
+          <input className='create-button' type="submit" value="Create Assignment" />
         </form>
       </div>
     );

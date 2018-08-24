@@ -45,26 +45,27 @@ class EditAssignment extends Component {
 
     return (
       <div>
+        <h1 className='welcome-text'>LAMBDA-HUB</h1>
         <h2>Create Assignment</h2>
         <form onSubmit={this.handleSubmit} >
-        <label for="name">Name:</label>
+          <label for="name">Name:</label>
           <input
-            type="text" 
+            type="text"
             name="name"
             value={this.state.name}
             onChange={this.handleChange} />
-            <br />
-            <label for="date">Date:</label>
+          <br />
+          <label for="date">Date:</label>
           <input
-            type="date" 
+            type="date"
             name="date"
             min="2018-06-18" max="2018-09-11"
             value={this.state.date}
             onChange={this.handleChange} />
-            <br />
-            <label for="unit">Unit:</label>
-          <select name="unit" value={this.state.unit} 
-                  onChange={this.handleChange}>
+          <br />
+          <label for="unit">Unit:</label>
+          <select name="unit" value={this.state.unit}
+            onChange={this.handleChange}>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -73,27 +74,27 @@ class EditAssignment extends Component {
           <br />
           <label for="type">Type:</label>
           <input
-            type="text" 
+            type="text"
             name="type"
             value={this.state.type}
             onChange={this.handleChange} />
-            <br />
-            <label for="github_link">Repo on Github:</label>
+          <br />
+          <label for="github_link">Repo on Github:</label>
           <input
-            type="text" 
+            type="text"
             name="github_link"
             value={this.state.github_link}
             onChange={this.handleChange} />
-            <br />
-            <label for="content">Info:</label>
+          <br />
+          <label for="content">Info:</label>
           <textarea
-            type="text" 
+            type="text"
             name="content"
             value={this.state.content}
             onChange={this.handleChange} />
           <br />
 
-          <input type="submit" value="Update Assignment" />
+          <input className='create-button' type="submit" value="Update Assignment" />
         </form>
       </div>
     );

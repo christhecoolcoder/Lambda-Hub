@@ -8,6 +8,7 @@ export default function Assignments(props) {
       return (
         <div key={assignment.id}>
 
+
           <h1>{assignment.name}</h1>
 
           <button onClick={() => props.fetchOneAssignment(assignment.id)}>Details</button>
