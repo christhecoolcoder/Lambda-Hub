@@ -5,6 +5,9 @@ http://super-event.surge.sh/
 
 ## What is lambda-hub?
 
+## screenshot
+![alt text](https://github.com/christhecoolcoder/Lambda-Hub/blob/master/Screen%20Shot%202018-09-06%20at%2011.34.32%20AM.png)
+
 ## user stories
 
 as a user i would like add assignments
