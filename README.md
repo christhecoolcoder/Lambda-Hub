@@ -1,9 +1,10 @@
 # Lambda-Hub
 
-## heroku link
-http://super-event.surge.sh/
+## deployed link
+http://skillful-sky.surge.sh/
 
 ## What is lambda-hub?
+lambda-hub is the go-to app for all instructors and students to keep track of and monitor the assigments and classwork of the great lambda cohort of general assembly.
 
 ## screenshot
 ![alt text](https://github.com/christhecoolcoder/Lambda-Hub/blob/master/Screen%20Shot%202018-09-06%20at%2011.34.32%20AM.png)
