@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3001';
+const BASE_URL = 'https://quiet-refuge-38665.herokuapp.com';
 
 export function fetchAssignments() {
     return fetch(BASE_URL + '/assignments')
