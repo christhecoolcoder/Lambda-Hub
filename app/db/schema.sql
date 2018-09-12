@@ -1,5 +1,5 @@
-DROP DATABASE lambda_hub;
-CREATE DATABASE lambda_hub;
+-- DROP DATABASE lambda_hub;
+-- CREATE DATABASE lambda_hub;
 
 
 DROP TABLE IF EXISTS assignments;
