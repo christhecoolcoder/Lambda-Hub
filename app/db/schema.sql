@@ -1,3 +1,7 @@
+DROP DATABASE lambda_hub;
+CREATE DATABASE lambda_hub;
+
+
 DROP TABLE IF EXISTS assignments;
 DROP TABLE IF EXISTS comments;
 
